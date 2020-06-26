@@ -449,6 +449,16 @@ data:
             replacement: $1
             action: drop
 
+          - source_labels: [pod]
+            regex: (.*)
+            target_label: pod_name
+            replacement: $1
+            action: replace
+
+          - source_labels: [container]
+            regex: "^(.*)$"
+            replacement: "$1"
+            target_label: container_name
 
           - action: replace
             source_labels: [id]
